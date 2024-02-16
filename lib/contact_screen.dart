@@ -14,9 +14,7 @@ class _ContactScreenState extends State<ContactScreen> {
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      // Form data is valid, send message
-      // Implement your logic to send the message via email or backend service
-      // For demonstration purposes, print the message to the console
+    
       print('Name: ${_nameController.text}');
       print('Email: ${_emailController.text}');
       print('Subject: ${_subjectController.text}');
@@ -54,7 +52,6 @@ class _ContactScreenState extends State<ContactScreen> {
                   if (value!.isEmpty) {
                     return 'Please enter your email';
                   }
-                  // Add email validation logic here if needed
                   return null;
                 },
               ),
