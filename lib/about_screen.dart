@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
 class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -40,15 +39,16 @@ class AboutScreen extends StatelessWidget {
                 IconButton(
                   icon: Icon(FlutterIcons.linkedin_ant),
                   onPressed: () {
-                    launch('https://www.linkedin.com/in/maria-tesfaye-3283b42a7');
+                    _launchURL('https://www.linkedin.com/in/maria-tesfaye-3283b42a7');
                   },
+                  tooltip: 'LinkedIn',
                 ),
                 IconButton(
                   icon: Icon(FlutterIcons.github_ant),
                   onPressed: () {
-                    launch('https://github.com/mariatesfaye');
-                    
+                    _launchURL('https://github.com/mariatesfaye');
                   },
+                  tooltip: 'GitHub',
                 ),
                 SizedBox(width: 20),
                 ElevatedButton(
@@ -63,5 +63,18 @@ class AboutScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _launchURL(String url) async {
+    try {
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    } catch (e) {
+      
+      print('Error launching URL: $e');
+    }
   }
 }
