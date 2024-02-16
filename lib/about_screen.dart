@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 class AboutScreen extends StatelessWidget {
   @override
@@ -19,7 +21,7 @@ class AboutScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed faucibus, nunc non feugiat bibendum, urna arcu volutpat libero, eu rutrum ex velit eget velit.',
+              'Welcome to my page!',
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 20),
@@ -38,19 +40,14 @@ class AboutScreen extends StatelessWidget {
                 IconButton(
                   icon: Icon(FlutterIcons.linkedin_ant),
                   onPressed: () {
-                    // Open LinkedIn profile
+                    launch('https://www.linkedin.com/in/maria-tesfaye-3283b42a7');
                   },
                 ),
                 IconButton(
                   icon: Icon(FlutterIcons.github_ant),
                   onPressed: () {
-                    // Open GitHub profile
-                  },
-                ),
-                IconButton(
-                  icon: Icon(FlutterIcons.twitter_ant),
-                  onPressed: () {
-                    // Open Twitter profile
+                    launch('https://github.com/mariatesfaye');
+                    
                   },
                 ),
                 SizedBox(width: 20),
