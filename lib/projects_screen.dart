@@ -25,20 +25,98 @@ class ProjectsScreen extends StatelessWidget {
             },
           ),
           ProjectCard(
-            projectName: 'Project 2',
-            projectDescription: 'Description of Project 2',
+            projectName: 'Personal Portfolio App',
+            projectDescription: 'Built using flutter to show my skills and projects.',
             onTap: () {
               Navigator.pushNamed(
                 context,
                 '/project_details',
                 arguments: {
-                  'projectName': 'Project 2',
-                  'projectDescription': 'Description of Project 2',
+                  'projectName': 'Personal Portfolio App',
+                  'projectDescription': 'This personal portfolio app is built to show my skills and projects.',
+                  'projectLead': 'Maria Tesfaye',
+                  'startDate': '2024-01-12',
+                  'endDate' : '2024-02-14'
                 },
               );
             },
           ),
-          // Add more ProjectCard widgets for additional projects
+          ProjectCard(
+            projectName: 'Full-stack song manager',
+            projectDescription:
+                'This full-stack song app is built using React.js, Redux Toolkit and Node.js for viewing, adding, updating and deleting a song',
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/project_details',
+                arguments: {
+                  'projectName': 'Full-stack song manager',
+                  'projectDescription':
+                      'This full-stack song app is built using React.js, Redux Toolkit and Node.js for viewing, adding, updating and deleting a song',
+                  'projectLead': 'Maria Tesfaye',
+                  'startDate': '2024-01-24',
+                  'endDate': '2024-02-07',
+                },
+              );
+            },
+          ),
+          ProjectCard(
+            projectName: 'aspnet-core-api',
+            projectDescription:
+                'This task manager API is a RESTFUL web service which is built using ASP.NET core',
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/project_details',
+                arguments: {
+                  'projectName': 'aspnet-core-api',
+                  'projectDescription':
+                      'This task manager API is a RESTFUL web service which is built using ASP.NET core',
+                  'projectLead': 'Maria Tesfaye',
+                  'startDate': '2024-01-22',
+                  'endDate': '2024-02-13',
+                },
+              );
+            },
+          ),
+          ProjectCard(
+            projectName: 'Monitorix',
+            projectDescription:
+                'This is a web-based real-time performance monitoring tool built using Node.js',
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/project_details',
+                arguments: {
+                  'projectName': 'Monitorix',
+                  'projectDescription':
+                      'This is a web-based real-time performance monitoring tool built using Node.js',
+                  'projectLead': 'In a team of 5',
+                  'startDate': '2023-12-20',
+                  'endDate': '2024-01-26',
+                },
+              );
+            },
+          ),
+          ProjectCard(
+            projectName: 'React TODO app',
+            projectDescription:
+                'This to do app tracked is built using React.js',
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/project_details',
+                arguments: {
+                  'projectName': 'React TODO app',
+                  'projectDescription':
+                      'This to do app tracked is built using React.js',
+                  'projectLead': 'Maria Tesfaye',
+                  'startDate': '2024-01-18',
+                  'endDate': '2024-02-01',
+                },
+              );
+            },
+          ),
         ],
       ),
     );
@@ -48,11 +126,17 @@ class ProjectsScreen extends StatelessWidget {
 class ProjectCard extends StatelessWidget {
   final String projectName;
   final String projectDescription;
+  final String projectLead;
+  final String startDate;
+  final String endDate;
   final VoidCallback onTap;
 
   ProjectCard({
     required this.projectName,
     required this.projectDescription,
+    required this.projectLead,
+    required this.startDate,
+    required this.endDate,
     required this.onTap,
   });
 
@@ -75,6 +159,21 @@ class ProjectCard extends StatelessWidget {
               SizedBox(height: 10),
               Text(
                 projectDescription,
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Project Lead: $projectLead',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'Start Date: $startDate',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'End Date: $endDate',
                 style: TextStyle(fontSize: 16),
               ),
             ],
