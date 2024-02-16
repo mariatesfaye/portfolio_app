@@ -6,10 +6,23 @@ class ContactScreen extends StatefulWidget {
 }
 
 class _ContactScreenState extends State<ContactScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _subjectController = TextEditingController();
   final TextEditingController _messageController = TextEditingController();
+
+  void _submitForm() {
+    if (_formKey.currentState!.validate()) {
+      // Form data is valid, send message
+      // Implement your logic to send the message via email or backend service
+      // For demonstration purposes, print the message to the console
+      print('Name: ${_nameController.text}');
+      print('Email: ${_emailController.text}');
+      print('Subject: ${_subjectController.text}');
+      print('Message: ${_messageController.text}');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,39 +32,60 @@ class _ContactScreenState extends State<ContactScreen> {
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Contact Me',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              controller: _nameController,
-              decoration: InputDecoration(labelText: 'Name'),
-            ),
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(labelText: 'Email'),
-            ),
-            TextField(
-              controller: _subjectController,
-              decoration: InputDecoration(labelText: 'Subject'),
-            ),
-            TextField(
-              controller: _messageController,
-              decoration: InputDecoration(labelText: 'Message'),
-              maxLines: 4,
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Implement functionality to send message
-              },
-              child: Text('Send Message'),
-            ),
-          ],
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextFormField(
+                controller: _nameController,
+                decoration: InputDecoration(labelText: 'Name'),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your name';
+                  }
+                  return null;
+                },
+              ),
+              TextFormField(
+                controller: _emailController,
+                decoration: InputDecoration(labelText: 'Email'),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your email';
+                  }
+                  // Add email validation logic here if needed
+                  return null;
+                },
+              ),
+              TextFormField(
+                controller: _subjectController,
+                decoration: InputDecoration(labelText: 'Subject'),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter a subject';
+                  }
+                  return null;
+                },
+              ),
+              TextFormField(
+                controller: _messageController,
+                decoration: InputDecoration(labelText: 'Message'),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter a message';
+                  }
+                  return null;
+                },
+                maxLines: 4,
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _submitForm,
+                child: Text('Send Message'),
+              ),
+            ],
+          ),
         ),
       ),
     );
