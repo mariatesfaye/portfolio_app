@@ -13,16 +13,29 @@ class ResumeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Resume/CV Content',
+              'Education',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
+            SizedBox(height: 10),
+            Text(
+              'Bachelor of Science in software engineering and computing technology(IT Stream), ',
+              style: TextStyle(fontSize: 16),
+            ),
             SizedBox(height: 20),
-            // Add your resume content here
+            Text(
+              'Projects Experience',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'Software Engineer student at AAIT, (June 28 2022 - July 2025)',
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 20),
 
             ElevatedButton(
               onPressed: () {
-                // Navigate to the PDF viewer screen
-                Navigator.pushNamed(context, '/pdf_viewer', arguments: 'resume.pdf');
+                Navigator.pushNamed(context, '/pdf_viewer', arguments: 'maria_resume.pdf');
               },
               child: Text('View Resume'),
             ),
