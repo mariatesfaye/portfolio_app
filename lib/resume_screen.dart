@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class ResumeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,11 +19,13 @@ class ResumeScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             // Add your resume content here
+
             ElevatedButton(
               onPressed: () {
-                // Implement functionality to download or share resume
+                // Navigate to the PDF viewer screen
+                Navigator.pushNamed(context, '/pdf_viewer', arguments: 'resume.pdf');
               },
-              child: Text('Download/Share Resume'),
+              child: Text('View Resume'),
             ),
           ],
         ),
