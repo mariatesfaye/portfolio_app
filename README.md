@@ -31,7 +31,7 @@ To run this app locally, follow these steps:
    ```bash
    flutter pub get
    
-5. Run the flutter app:
+5. Run the app:
    
    ```bash
    flutter run
